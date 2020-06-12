@@ -5,7 +5,7 @@ import { DeviceMotion } from "expo-sensors";
 export default function GameScreen() {
   const [paused, set_paused] = useState(false);
 
-  const [color, set_color] = useState("yellow");
+  const [color, set_color] = useState("pink");
 
   useEffect(() => {
     DeviceMotion.setUpdateInterval(250);
