@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { DeviceMotion } from "expo-sensors";
 
-export default function GameScreen({ navigation }) {
+export default function GameScreen({ navigation, route }) {
   const [paused, set_paused] = useState(false);
-
   const [color, set_color] = useState("pink");
+  const { count } = route.params;
 
   useEffect(() => {
     DeviceMotion.setUpdateInterval(250);
@@ -40,14 +40,19 @@ export default function GameScreen({ navigation }) {
       <Text style={{ marginBottom: 20, fontSize: 24, fontWeight: "bold" }}>
         Choose your color!
       </Text>
-
       <Button
         title={paused ? "Restart" : "Pause"}
         onPress={() => {
           set_paused(!paused);
         }}
       />
-      <Button title="Go to Home" onPress={() => navigation.goBack()} />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate("Home", { count: count + 1 })}
+      />
+      <Text style={{ fontWeight: "bold", fontSize: 20, marginTop: 30 }}>
+        Times i've been here: {count}
+      </Text>
     </View>
   );
 }

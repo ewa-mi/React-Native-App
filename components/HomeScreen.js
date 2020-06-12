@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Button } from "react-native";
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ route, navigation }) {
+  const [count, setCount] = useState(1);
+  useEffect(() => {
+    if (route.params && route.params.count) {
+      setCount(route.params.count);
+    }
+  }, [route.params]);
   return (
     <View
       style={{
@@ -20,7 +26,10 @@ export default function HomeScreen({ navigation }) {
       >
         Welcome to my app!
       </Text>
-      <Button title="Go to Game" onPress={() => navigation.navigate("Game")} />
+      <Button
+        title="Go to Game"
+        onPress={() => navigation.navigate("Game", { count })}
+      />
     </View>
   );
 }
