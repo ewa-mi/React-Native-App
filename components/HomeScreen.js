@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <View
       style={{
         alignItems: "center",
-        backgroundColor: "pink",
+        backgroundColor: "yellow",
         justifyContent: "center",
         flex: 1,
       }}
@@ -20,6 +20,7 @@ export default function HomeScreen() {
       >
         Welcome to my app!
       </Text>
+      <Button title="Go to Game" onPress={() => navigation.navigate("Game")} />
     </View>
   );
 }
