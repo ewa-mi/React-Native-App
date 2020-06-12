@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { DeviceMotion } from "expo-sensors";
 
-export default function GameScreen() {
+export default function GameScreen({ navigation }) {
   const [paused, set_paused] = useState(false);
 
   const [color, set_color] = useState("pink");
@@ -47,6 +47,7 @@ export default function GameScreen() {
           set_paused(!paused);
         }}
       />
+      <Button title="Go to Home" onPress={() => navigation.goBack()} />
     </View>
   );
 }
